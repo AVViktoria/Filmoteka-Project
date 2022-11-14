@@ -1,10 +1,6 @@
-// import fetchPopularMovies from './fetchPopularMovies';
-// import renderMarkupMovieCard from './markapTempllate';
-
 const API_KEY = 'api_key=301d018a3b09052968e9ce18b1793bab';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
-// const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?' + API_KEY;
 
 const genres = [
@@ -91,10 +87,9 @@ const form = document.querySelector('.search__form');
 const search = document.querySelector('.search__field');
 
 const tagsEl = document.getElementById('tags');
-let selectedGenre = []
+let selectedGenre = [];
 // setGenre();
 // genresBtn.addEventListener('click', setGenre);
-
 
 //*pagination parameters
 // const prev = document.getElementById('prev')
@@ -106,8 +101,6 @@ let selectedGenre = []
 // let  prevPage = 3;
 // let  lastUrl = '';
 // let  totalPages = 100;
-
-
 
 function setGenre() {
   tagsEl.innerHTML = '';
@@ -150,30 +143,27 @@ function setGenre() {
   });
 }
 
-//функция которая сбрасывает все жанры одной кнопкой 
+//функция которая сбрасывает все жанры одной кнопкой
 
-function clearBtn(){
+function clearBtn() {
   //что-бы наша кнопка clear не дублировалась
   let clearBtn = document.getElementById('clear');
-  if(clearBtn){
-      clearBtn.classList.add('highlight')
-  }else{
-          //формируем кнопку Clear
-      let clear = document.createElement('div');
-      clear.classList.add('tag','highlight', 'clear-btn');
-      clear.id = 'clear';
-      clear.innerText = 'Clear All';
-      clear.addEventListener('click', () => {
-          selectedGenre = [];
-          setGenre();            
-          getMovies(API_URL);
-      })
-      tagsEl.append(clear);
+  if (clearBtn) {
+    clearBtn.classList.add('highlight');
+  } else {
+    //формируем кнопку Clear
+    let clear = document.createElement('div');
+    clear.classList.add('tag', 'highlight', 'clear-btn');
+    clear.id = 'clear';
+    clear.innerText = 'Clear All';
+    clear.addEventListener('click', () => {
+      selectedGenre = [];
+      setGenre();
+      getMovies(API_URL);
+    });
+    tagsEl.append(clear);
   }
-  
 }
-
-
 
 // renderMarkupMovieCard(API_URL);
 // getMovies(API_URL);
@@ -187,34 +177,32 @@ function getMovies(url) {
     .then(res => res.json())
     .then(data => {
       // console.log(data.results)
-      if(data.results.length !== 0){
-      showMovies(data.results);
-          currentPage = data.page;
-          nextPage = currentPage + 1;
-          prevPage = currentPage - 1;
-          totalPages = data.total_pages;
+      if (data.results.length !== 0) {
+        showMovies(data.results);
+        currentPage = data.page;
+        nextPage = currentPage + 1;
+        prevPage = currentPage - 1;
+        totalPages = data.total_pages;
 
-          // current.innerText = currentPage;
+        // current.innerText = currentPage;
 
-          // if(currentPage <= 1){
-          //   prev.classList.add('disabled');
-          //   next.classList.remove('disabled')
-          // }else if(currentPage>= totalPages){
-          //   prev.classList.remove('disabled');
-          //   next.classList.add('disabled')
-          // }else{
-          //   prev.classList.remove('disabled');
-          //   next.classList.remove('disabled')
-          // }
+        // if(currentPage <= 1){
+        //   prev.classList.add('disabled');
+        //   next.classList.remove('disabled')
+        // }else if(currentPage>= totalPages){
+        //   prev.classList.remove('disabled');
+        //   next.classList.add('disabled')
+        // }else{
+        //   prev.classList.remove('disabled');
+        //   next.classList.remove('disabled')
+        // }
 
-          tagsEl.scrollIntoView({behavior : 'smooth'})
-
-      }else{
-          main.innerHTML= `<div class="container library-container noMovies"><h1 class="title-queue">There are no movies, try other genres</h1></div>`
+        tagsEl.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        main.innerHTML = `<div class="container library-container noMovies"><h1 class="title-queue">There are no movies, try other genres</h1></div>`;
       }
     });
 }
-
 
 function showMovies(data) {
   main.innerHTML = '';
@@ -304,27 +292,21 @@ form.addEventListener('submit', e => {
 function highlightSelection() {
   const tags = document.querySelectorAll('.tag');
   tags.forEach(tag => {
-      tag.classList.remove('highlight')
-  })
-  clearBtn()
+    tag.classList.remove('highlight');
+  });
+  clearBtn();
   //проверяем есть ли в жанрах что-то
-  if(selectedGenre.length !=0){   
-      selectedGenre.forEach(id => {
-          const hightlightedTag = document.getElementById(id);
-          hightlightedTag.classList.add('highlight');
-      })
+  if (selectedGenre.length != 0) {
+    selectedGenre.forEach(id => {
+      const hightlightedTag = document.getElementById(id);
+      hightlightedTag.classList.add('highlight');
+    });
   }
-
 }
-
-
-
 
 const genresBtn = document.querySelector('.dropdown-genres-btn');
 // const genresList = document.querySelector('.dropdown-content');
 genresBtn.addEventListener('click', myFunction);
-
-
 
 function myFunction() {
   document.getElementById('tags').classList.toggle('show');
@@ -341,10 +323,6 @@ document.onclick = function (event) {
     }
   }
 };
-
-
-
-
 
 //*pagination
 
@@ -364,7 +342,6 @@ document.onclick = function (event) {
 //   let urlSplit = lastUrl.split('?');
 //   let queryParams = urlSplit[1].split('&');
 //   let key = queryParams[queryParams.length -1].split('=');
-
 
 // if(key[0] != 'page'){
 //     let url = lastUrl + '&page='+page
