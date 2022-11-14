@@ -1,11 +1,11 @@
 {
-  "name": "parcel-project-template",
+  "name": "Filmoteka-Project",
   "version": "2.0.0",
   "description": "",
   "homepage": "https://avviktoria.github.io/Filmoteka-Project/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Filmoteka/"
+    "build": "parcel build src/*.html --public-url /Filmoteka-Project/"
   },
   "repository": {
     "type": "git",
