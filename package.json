@@ -2,7 +2,7 @@
   "name": "Filmoteka-Project",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://github.com/AVViktoria/Filmoteka-Project/",
+  "homepage": "https://github.com/AVViktoria/Filmoteka-Project.git",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /Filmoteka/"
@@ -21,6 +21,7 @@
     "axios": "^1.1.2",
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0",
+    "node-sass": "^8.0.0",
     "notiflix": "^3.2.5",
     "tui-pagination": "^3.4.1"
   },
