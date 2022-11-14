@@ -9,8 +9,5 @@ import './js/openModal';
 import './js/scroll';
 import './js/subscribe';
 
-// import { renderQueueMarkup } from './js/renderQueueMarkup';
-// import './js/renderQueueMarkup';
-
 fetchGenres();
 fetchPopularMovies();
